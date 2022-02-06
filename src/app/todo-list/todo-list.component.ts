@@ -36,8 +36,6 @@ export class TodoListComponent implements OnInit, AfterContentChecked  {
         "done": false,
       }
     );
-
-    console.log(JSON.stringify(this.todoItems, null, 1))
   }
 
 }
