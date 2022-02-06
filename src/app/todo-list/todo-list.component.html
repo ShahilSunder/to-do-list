@@ -1,10 +1,10 @@
 <mat-form-field class="list-input">
     <!-- <mat-label></mat-label> -->
-    <input matInput #newTodoItem (keydown.enter)="createTodoItem(newTodoItem.value)" type="text" autofocus placeholder="What needs to be done?">
+    <input matInput #newTodoItem (keydown.enter)="createTodoItem()" [(ngModel)]="newTodoItemDetails"  type="text" autofocus placeholder="What needs to be done?">
 </mat-form-field>
 
 <mat-selection-list #doneItems >
-    <mat-list-option class="todo-item" *ngFor="let todoItem of todoItems; index as i" [value]="todoItem.details" [selected]="todoItem.done" [disableRipple]="true"
+    <mat-list-option class="todo-item" *ngFor="let todoItem of todoItems; index as i" [value]="todoItem.details" [(selected)]="todoItem.done" [disableRipple]="true"
     >
         <div class="option-row">
             <p>{{ todoItem.details }}</p>

@@ -19,6 +19,8 @@ export class TodoListComponent implements OnInit, AfterContentChecked {
     }
   ]
 
+  newTodoItemDetails: string ="";
+
   constructor(private changeDetector: ChangeDetectorRef) { }
 
 
@@ -29,13 +31,16 @@ export class TodoListComponent implements OnInit, AfterContentChecked {
     this.changeDetector.detectChanges();
   }
 
-  createTodoItem(newTodoItem: string) {
+  createTodoItem() {
     this.todoItems.push(
       {
-        "details": newTodoItem,
+        "details": this.newTodoItemDetails,
         "done": false,
       }
     );
+    this.newTodoItemDetails = "";
+
+    console.log(JSON.stringify(this.todoItems, null, 1))
   }
 
   removeTodoItem(index: number) {
