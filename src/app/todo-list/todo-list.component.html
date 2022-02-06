@@ -1,8 +1,16 @@
 <mat-form-field class="list-input">
     <!-- <mat-label></mat-label> -->
-    <input matInput 
-    type="text"
-    autofocus 
-    placeholder="What needs to be done?" 
-    >
+    <input matInput type="text" autofocus placeholder="What needs to be done?">
 </mat-form-field>
+
+<mat-selection-list #doneItems>
+    <mat-list-option class="todo-item" *ngFor="let todoItem of todoItems" [selected]="todoItem.done"
+    >
+        {{ todoItem.details }}
+    </mat-list-option>
+</mat-selection-list>
+<div class="list-counter">
+    <p>
+        {{doneItems.selectedOptions.selected.length}}
+    </p>
+</div>
