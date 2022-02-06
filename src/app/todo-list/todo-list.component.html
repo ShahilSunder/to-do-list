@@ -1,16 +1,19 @@
 <mat-form-field class="list-input">
     <!-- <mat-label></mat-label> -->
-    <input matInput type="text" autofocus placeholder="What needs to be done?">
+    <input matInput #newTodoItem (keydown.enter)="createTodoItem(newTodoItem.value)" type="text" autofocus placeholder="What needs to be done?">
 </mat-form-field>
 
-<mat-selection-list #doneItems>
-    <mat-list-option class="todo-item" *ngFor="let todoItem of todoItems" [selected]="todoItem.done"
+<mat-selection-list #doneItems >
+    <mat-list-option class="todo-item" *ngFor="let todoItem of todoItems" [value]="todoItem.details" [selected]="todoItem.done"
     >
-        {{ todoItem.details }}
+        <div class="option-row">
+            <p>{{ todoItem.details }}</p>
+            <button *ngIf="!todoItem.done" mat-icon-button>
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
     </mat-list-option>
 </mat-selection-list>
-<div class="list-counter">
-    <p>
-        {{doneItems.selectedOptions.selected.length}}
-    </p>
-</div>
+
+<app-list-counter [numberOfDoneItems]="todoItems.length - doneItems.selectedOptions.selected.length">
+</app-list-counter>
