@@ -4,11 +4,11 @@
 </mat-form-field>
 
 <mat-selection-list #doneItems >
-    <mat-list-option class="todo-item" *ngFor="let todoItem of todoItems" [value]="todoItem.details" [selected]="todoItem.done"
+    <mat-list-option class="todo-item" *ngFor="let todoItem of todoItems; index as i" [value]="todoItem.details" [selected]="todoItem.done" [disableRipple]="true"
     >
         <div class="option-row">
             <p>{{ todoItem.details }}</p>
-            <button *ngIf="!todoItem.done" mat-icon-button>
+            <button *ngIf="!todoItem.done" (click)="removeTodoItem(i)" mat-icon-button >
                 <mat-icon>clear</mat-icon>
             </button>
         </div>

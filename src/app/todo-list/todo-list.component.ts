@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef,AfterContentChecked } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
 
 @Component({
   selector: 'app-todo-list',
@@ -6,7 +6,7 @@ import { Component, OnInit, ChangeDetectorRef,AfterContentChecked } from '@angul
   styleUrls: ['./todo-list.component.scss'],
 
 })
-export class TodoListComponent implements OnInit, AfterContentChecked  {
+export class TodoListComponent implements OnInit, AfterContentChecked {
 
   todoItems: TodoItem[] = [
     {
@@ -25,17 +25,23 @@ export class TodoListComponent implements OnInit, AfterContentChecked  {
   ngOnInit(): void {
   }
 
-  ngAfterContentChecked() : void {
+  ngAfterContentChecked(): void {
     this.changeDetector.detectChanges();
   }
 
-  createTodoItem(newTodoItem: string){
+  createTodoItem(newTodoItem: string) {
     this.todoItems.push(
       {
         "details": newTodoItem,
         "done": false,
       }
     );
+  }
+
+  removeTodoItem(index: number) {
+    if (index > -1) {
+      this.todoItems.splice(index, 1);
+    }
   }
 
 }
