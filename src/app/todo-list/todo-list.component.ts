@@ -12,10 +12,6 @@ export class TodoListComponent implements OnInit, AfterContentChecked {
     {
       "details": "Do some work",
       "done": false,
-    },
-    {
-      "details": "Write some code",
-      "done": true,
     }
   ]
 
